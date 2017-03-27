@@ -43,13 +43,10 @@
             this.checkOSTTheme = new System.Windows.Forms.CheckBox();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.trackBarOST = new System.Windows.Forms.TrackBar();
-            this.label7 = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarIntro)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarOST)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -66,13 +63,13 @@
             // trackBarIntro
             // 
             this.trackBarIntro.BackColor = System.Drawing.Color.Black;
-            this.trackBarIntro.Location = new System.Drawing.Point(102, 329);
+            this.trackBarIntro.Location = new System.Drawing.Point(513, 421);
             this.trackBarIntro.Maximum = 30;
             this.trackBarIntro.Name = "trackBarIntro";
             this.trackBarIntro.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.trackBarIntro.Size = new System.Drawing.Size(277, 45);
             this.trackBarIntro.TabIndex = 1;
-            this.trackBarIntro.Scroll += new System.EventHandler(this.trackBarIntro_Scroll);
+            this.trackBarIntro.Scroll += new System.EventHandler(this.trackBarVolume);
             // 
             // label1
             // 
@@ -80,7 +77,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 329);
+            this.label1.Location = new System.Drawing.Point(429, 435);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 25);
             this.label1.TabIndex = 2;
@@ -92,7 +89,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(138, 213);
+            this.label2.Location = new System.Drawing.Point(138, 276);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(172, 25);
             this.label2.TabIndex = 3;
@@ -104,7 +101,7 @@
             this.checkBox1.BackColor = System.Drawing.Color.Transparent;
             this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox1.ForeColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(434, 445);
+            this.checkBox1.Location = new System.Drawing.Point(631, 373);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(159, 29);
             this.checkBox1.TabIndex = 4;
@@ -117,7 +114,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(12, 280);
+            this.label3.Location = new System.Drawing.Point(12, 343);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(233, 25);
             this.label3.TabIndex = 3;
@@ -126,7 +123,7 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(128, 276);
+            this.numericUpDown1.Location = new System.Drawing.Point(128, 339);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(64, 29);
             this.numericUpDown1.TabIndex = 5;
@@ -150,7 +147,7 @@
             this.checkIntroTheme.BackColor = System.Drawing.Color.Transparent;
             this.checkIntroTheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkIntroTheme.ForeColor = System.Drawing.Color.White;
-            this.checkIntroTheme.Location = new System.Drawing.Point(17, 241);
+            this.checkIntroTheme.Location = new System.Drawing.Point(12, 304);
             this.checkIntroTheme.Name = "checkIntroTheme";
             this.checkIntroTheme.Size = new System.Drawing.Size(228, 29);
             this.checkIntroTheme.TabIndex = 7;
@@ -190,36 +187,12 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "OST Delay             sec.";
             // 
-            // trackBarOST
-            // 
-            this.trackBarOST.BackColor = System.Drawing.Color.Black;
-            this.trackBarOST.Location = new System.Drawing.Point(102, 480);
-            this.trackBarOST.Maximum = 30;
-            this.trackBarOST.Name = "trackBarOST";
-            this.trackBarOST.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.trackBarOST.Size = new System.Drawing.Size(277, 45);
-            this.trackBarOST.TabIndex = 11;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(12, 480);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(84, 25);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Volume";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(802, 557);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.trackBarOST);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.checkOSTTheme);
@@ -238,7 +211,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarIntro)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarOST)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,8 +231,6 @@
         private System.Windows.Forms.CheckBox checkOSTTheme;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TrackBar trackBarOST;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Timer timer2;
     }
 }

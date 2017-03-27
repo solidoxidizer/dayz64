@@ -16,6 +16,7 @@ namespace dayz64
 {
     public partial class Form1 : Form
     {
+        //DLL FOR VOLUME CONTROL
         [DllImport("winmm.dll")]
         public static extern int waveOutGetVolume(IntPtr hwo, out uint dwVolume);
 
@@ -23,8 +24,6 @@ namespace dayz64
         public static extern int waveOutSetVolume(IntPtr hwo, uint dwVolume);
 
         //GET PATH OST AND INTRO SOUND FILE PATH
-        //private static string opath = Application.StartupPath + @"\resources\ost.wav";
-        //private static string ipath = Application.StartupPath + @"\resources\int.wav";
         static Stream istr = Properties.Resources.ost;
 
         //INTRO PLAYER
@@ -33,7 +32,8 @@ namespace dayz64
         //OST PLAYER
         private SoundPlayer oplay = new SoundPlayer(istr);
 
-        private static int playAfterIntro = 2;
+        //OST AND INTRO START SETTINGS
+        private static int playAfterIntro = 0;
         private static int playAfterOST = 60;
         private int _playAfterIntro;
         private int _playAfterOST;
@@ -49,7 +49,6 @@ namespace dayz64
             waveOutGetVolume(IntPtr.Zero, out CurrVol);
             ushort CalcVol = (ushort)(CurrVol & 0x0000ffff);
             trackBarIntro.Value = CalcVol / (ushort.MaxValue / 30);
-            trackBarOST.Value = CalcVol / (ushort.MaxValue / 30);
 
             //FORMS SETTINGS
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -57,10 +56,8 @@ namespace dayz64
             checkBox1.Checked = false;
             numericUpDown1.Value = playAfterIntro;
             numericUpDown2.Value = playAfterOST;
-
-            //PLAYER AFTER SETTINGS
-            _playAfterIntro = (int)numericUpDown1.Value;
-            _playAfterOST = (int)numericUpDown1.Value;
+            checkIntroTheme.Checked = true;
+            checkOSTTheme.Checked = true; 
 
             //TIMER INTRO
             timer1.Interval = 1000;
@@ -86,10 +83,22 @@ namespace dayz64
         //LAUNCH GAME AND PLAY SOUND
         private void launch()
         {
-            //START TIMER
-            timer1.Start();
+            //GET WAIT TIMES
+            _playAfterIntro = (int)numericUpDown1.Value;
+            _playAfterOST = (int)numericUpDown2.Value;
 
-            //ISPLAYING TRUE
+            //START TIMER 1
+            if (checkIntroTheme.Checked == true)
+            {
+                timer1.Start();
+            }
+
+            //START TIMER 1
+            if (checkOSTTheme.Checked == true)
+            {
+                timer2.Start();
+            }
+
             isPlaying = true;
 
             //START DAYZ THROUGH STEAM
@@ -120,9 +129,10 @@ namespace dayz64
             if (_playAfterIntro <= 0 && checkIntroTheme.Checked == true)
             {
                 //PLAY AUDIO
+                iplay.Stream.Position = 0;
                 iplay.Play();
                 timer1.Stop();
-                //_playAfterIntro = playAfterIntro;
+                _playAfterIntro = playAfterIntro;
 
                 MessageBox.Show("PLAY INTRO");
             }
@@ -139,6 +149,7 @@ namespace dayz64
             if (_playAfterOST <= 0 && checkOSTTheme.Checked == true)
             {
                 //PLAY AUDIO
+                oplay.Stream.Position = 0;
                 oplay.Play();
                 timer2.Stop();
                 //_playAfterOST = playAfterOST;
@@ -148,17 +159,7 @@ namespace dayz64
         }
 
         //VOLUME BAR INTRO
-        private void trackBarIntro_Scroll(object sender, EventArgs e)
-        {
-            int NewVolume = ((ushort.MaxValue / 30) * trackBarIntro.Value);
-
-            uint NewVolumeAllChannels = (((uint)NewVolume & 0x0000ffff) | ((uint)NewVolume << 16));
-
-            waveOutSetVolume(IntPtr.Zero, NewVolumeAllChannels);
-        }
-
-        //VOLUME BAR
-        private void trackBarOST_Scroll(object sender, EventArgs e)
+        private void trackBarVolume(object sender, EventArgs e)
         {
             int NewVolume = ((ushort.MaxValue / 30) * trackBarIntro.Value);
 
@@ -172,11 +173,6 @@ namespace dayz64
         {
             playAfterIntro = (int)numericUpDown1.Value;
             playAfterOST = (int)numericUpDown2.Value;
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
