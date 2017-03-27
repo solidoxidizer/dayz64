@@ -22,14 +22,16 @@ namespace dayz64
         [DllImport("winmm.dll")]
         public static extern int waveOutSetVolume(IntPtr hwo, uint dwVolume);
 
-        private static string opath = Application.StartupPath + @"\resources\ost.wav";
-        private static string ipath = Application.StartupPath + @"\resources\int.wav";
+        //GET PATH OST AND INTRO SOUND FILE PATH
+        //private static string opath = Application.StartupPath + @"\resources\ost.wav";
+        //private static string ipath = Application.StartupPath + @"\resources\int.wav";
+        static Stream istr = Properties.Resources.ost;
+
+        //INTRO PLAYER
+        private SoundPlayer iplay = new SoundPlayer(istr);
 
         //OST PLAYER
-        private SoundPlayer iplay = new SoundPlayer(ipath);
-
-        //OST PLAYER
-        private SoundPlayer oplay = new SoundPlayer(opath);
+        private SoundPlayer oplay = new SoundPlayer(istr);
 
         private static int playAfterIntro = 2;
         private static int playAfterOST = 60;
