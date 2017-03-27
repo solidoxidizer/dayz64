@@ -1,0 +1,9 @@
+D:\Projects\dayz64\dayz64\dayz64\bin\Debug\dayz64.exe.config
+D:\Projects\dayz64\dayz64\dayz64\bin\Debug\dayz64.exe
+D:\Projects\dayz64\dayz64\dayz64\bin\Debug\dayz64.pdb
+D:\Projects\dayz64\dayz64\dayz64\obj\Debug\dayz64.csprojResolveAssemblyReference.cache
+D:\Projects\dayz64\dayz64\dayz64\obj\Debug\dayz64.Form1.resources
+D:\Projects\dayz64\dayz64\dayz64\obj\Debug\dayz64.Properties.Resources.resources
+D:\Projects\dayz64\dayz64\dayz64\obj\Debug\dayz64.csproj.GenerateResource.Cache
+D:\Projects\dayz64\dayz64\dayz64\obj\Debug\dayz64.exe
+D:\Projects\dayz64\dayz64\dayz64\obj\Debug\dayz64.pdb
