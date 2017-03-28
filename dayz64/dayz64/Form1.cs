@@ -11,6 +11,8 @@ using System.Diagnostics;
 using System.Media;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Threading;
+using System.Security.Principal;
 
 namespace dayz64
 {
@@ -32,12 +34,22 @@ namespace dayz64
         //OST PLAYER
         private SoundPlayer oplay = new SoundPlayer(istr);
 
+        //DAYZ PROCESSES
+        Process[] process32;
+        Process[] process64;
+
+        //CHECK IF ADMIN
+        private bool isAdmin;
+
         //OST AND INTRO START SETTINGS
         private static int playAfterIntro = 0;
         private static int playAfterOST = 60;
         private int _playAfterIntro;
         private int _playAfterOST;
         private bool isPlaying = false;
+
+        //THREADS
+        Thread thread1;
 
         //ON LOAD FORM
         public Form1()
@@ -66,6 +78,14 @@ namespace dayz64
             //TIMER INTRO
             timer2.Interval = 1000;
             timer2.Tick += new EventHandler(countOST);
+
+            //ADMIN
+            isAdmin = IsAdministrator();
+
+            if (isAdmin == false)
+            {
+                MessageBox.Show("You didn't run the launcher as an Administrator. This may cause some functions to not properly work", "Not running as admin", MessageBoxButtons.OK);
+            }
         }
 
         //PLAY BUTTON PRESS EVENT
@@ -77,6 +97,19 @@ namespace dayz64
             }else
             {
                 stop();
+            }
+        }
+
+        private void getProc()
+        {
+            Thread.Sleep(5000);
+
+            process32 = Process.GetProcessesByName("DayZ");
+            process64 = Process.GetProcessesByName("DayZ_x64");
+
+            if(checkHighPriority.Checked == true)
+            {
+                setHighPriority();
             }
         }
 
@@ -105,6 +138,10 @@ namespace dayz64
             if (checkBox1.Checked == true)
             {
                 Process.Start("steam://rungameid/221100");
+
+                //HIGH PROCESS THREAD
+                thread1 = new Thread(getProc);
+                thread1.Start();
             }
 
             button1.Text = "STOP";
@@ -116,6 +153,16 @@ namespace dayz64
             iplay.Stop();
             isPlaying = false;
             button1.Text = "PLAY";
+
+            foreach (Process pro32 in process32)
+            {
+                pro32.Kill();
+            }
+
+            foreach (Process pro64 in process64)
+            {
+                pro64.Kill();
+            }
         }
 
         //TIMER INTRO EVENT 
@@ -168,11 +215,32 @@ namespace dayz64
             waveOutSetVolume(IntPtr.Zero, NewVolumeAllChannels);
         }
 
+        private void setHighPriority()
+        {
+            foreach (Process pro32 in process32)
+            {
+                pro32.PriorityClass = ProcessPriorityClass.High;
+            }
+
+            foreach (Process pro64 in process64)
+            {
+                pro64.PriorityClass = ProcessPriorityClass.High;
+            }
+        }
+
         //COUNTDOWN TIMER SET
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             playAfterIntro = (int)numericUpDown1.Value;
             playAfterOST = (int)numericUpDown2.Value;
+        }
+
+        //CHECK IF STARTED AS ADMIN
+        private static bool IsAdministrator()
+        {
+            WindowsIdentity identity = WindowsIdentity.GetCurrent();
+            WindowsPrincipal principal = new WindowsPrincipal(identity);
+            return principal.IsInRole(WindowsBuiltInRole.Administrator);
         }
     }
 }

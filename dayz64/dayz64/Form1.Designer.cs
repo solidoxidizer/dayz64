@@ -44,6 +44,7 @@
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.checkHighPriority = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarIntro)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -101,7 +102,7 @@
             this.checkBox1.BackColor = System.Drawing.Color.Transparent;
             this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox1.ForeColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(631, 373);
+            this.checkBox1.Location = new System.Drawing.Point(434, 373);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(159, 29);
             this.checkBox1.TabIndex = 4;
@@ -187,12 +188,26 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "OST Delay             sec.";
             // 
+            // checkHighPriority
+            // 
+            this.checkHighPriority.AutoSize = true;
+            this.checkHighPriority.BackColor = System.Drawing.Color.Transparent;
+            this.checkHighPriority.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkHighPriority.ForeColor = System.Drawing.Color.White;
+            this.checkHighPriority.Location = new System.Drawing.Point(647, 373);
+            this.checkHighPriority.Name = "checkHighPriority";
+            this.checkHighPriority.Size = new System.Drawing.Size(143, 29);
+            this.checkHighPriority.TabIndex = 11;
+            this.checkHighPriority.Text = "high priority";
+            this.checkHighPriority.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(802, 557);
+            this.Controls.Add(this.checkHighPriority);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.checkOSTTheme);
@@ -232,6 +247,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.CheckBox checkHighPriority;
     }
 }
 
